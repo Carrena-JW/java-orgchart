@@ -1,4 +1,4 @@
-package carrena.orgchart;
+package carrena.orgchart.repository;
 
 import carrena.orgchart.entity.*;
 import carrena.orgchart.repository.*;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-class OrghartApplicationTests {
+class RepositoryUnitTest {
     @Autowired
     UserService userService;
     @Autowired

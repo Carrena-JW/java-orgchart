@@ -163,9 +163,11 @@ public class UserService {
                 .sortOrder(command.sortOrder())
                 .build();
 
+
         command.id().ifPresent(id -> {
             position.setId(command.id().get());
         });
+
 
         var result = userPositionRepository.save(position);
 
