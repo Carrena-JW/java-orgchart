@@ -29,6 +29,7 @@ public class DepartmentService {
                 .status(Status.values()[command.departmentStatus()])
                 .build();
 
+
         validationByDepartmentIdentity(command.departmentIdentity());
         var result = userDepartmentRepository.save(department);
 
