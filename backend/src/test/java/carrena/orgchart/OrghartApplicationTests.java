@@ -1,13 +1,11 @@
 package carrena.orgchart;
 
-import carrena.orgchart.command.CreateUserCommand;
 import carrena.orgchart.entity.*;
 import carrena.orgchart.repository.*;
 import carrena.orgchart.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -172,6 +170,12 @@ class OrghartApplicationTests {
     //endregion
 
 
+    //region Service
+    @Test
+    void 서비스_사용자_생성(){
+
+    }
+    //endregion
 
 
 

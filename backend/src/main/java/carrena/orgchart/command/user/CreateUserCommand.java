@@ -1,4 +1,4 @@
-package carrena.orgchart.command;
+package carrena.orgchart.command.user;
 
 import java.util.Optional;
 
@@ -14,7 +14,8 @@ public record CreateUserCommand(String userName,
                                 String userRoleIdentity,
                                 String userTitleIdentity,
                                 String userPositionIdentity,
-                                Boolean isMainJob
-                                ) {
+                                Boolean isMainJob,
+                                Optional<Long> id
+                                ) implements UserCommand{
 
 }
