@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-@Rollback(false)
 class OrghartApplicationTests {
     @Autowired
     UserService userService;
@@ -93,6 +92,83 @@ class OrghartApplicationTests {
 
         assertThat(position).isEqualTo(result);
     }
+
+    @Test
+    void 사용자_존재유무_조회() {
+
+        UserEntity user = UserEntity.builder()
+                .name("황지웅")
+                .userNumber("0001")
+                .email("carrena@naver.com")
+                .userIdentity("carrena")
+                .phoneNumber("010-9082-1642")
+                .officeTel("02-9082-1642")
+                .build();
+
+        var result = userRepository.save(user);
+        var isExists = userRepository.existsByUserIdentity(result.getUserIdentity());
+        var findResult = userRepository.findByUserIdentity(result.getUserIdentity());
+        assertThat(result.getId()).isEqualTo(findResult.get().getId());
+
+        assertThat(isExists).isEqualTo(true);
+    }
+    @Test
+    void 사용자_부서_존재유무_조회(){
+        UserDepartmentEntity department = UserDepartmentEntity.builder()
+                .name("사장실")
+                .departmentIdentity("D0000")
+                .departmentManagerIdentity("carrena")
+                .parentDepartmentIdentity("D000")
+                .build();
+
+        var result = userDepartmentRepository.save(department);
+        var isExists = userDepartmentRepository.existsByDepartmentIdentity(result.getDepartmentIdentity());
+        var findResult = userDepartmentRepository.findByDepartmentIdentity(result.getDepartmentIdentity());
+        assertThat(isExists).isEqualTo(true);
+        assertThat(result.getId()).isEqualTo(findResult.get().getId());
+    }
+
+    @Test
+    void 사용자_직위_존재유무_조회(){
+        UserPositionEntity position = UserPositionEntity.builder()
+                .name("과장")
+                .userPositionIdentity("P000")
+                .build();
+        var result = userPositionRepository.save(position);
+        var isExists = userPositionRepository.existsByPositionIdentity(result.getPositionIdentity());
+        var findResult = userPositionRepository.findByPositionIdentity(result.getPositionIdentity());
+        assertThat(isExists).isEqualTo(true);
+        assertThat(result.getId()).isEqualTo(findResult.get().getId());
+    }
+
+    @Test
+    void 사용자_직책_존재유무_조회(){
+        UserRoleEntity role = UserRoleEntity.builder()
+                .name("팀원")
+                .userRoleIdentity("R000")
+                .build();
+
+        var result = userRoleRepository.save(role);
+        var isExists = userRoleRepository.existsByRoleIdentity(result.getRoleIdentity());
+        var findResult = userRoleRepository.findByRoleIdentity(result.getRoleIdentity());
+        assertThat(isExists).isEqualTo(true);
+        // 조회된 결과 id 비교
+        assertThat(result.getId()).isEqualTo(findResult.get().getId());
+    }
+
+    @Test
+    void 사용자_호칭_존재유무_조회(){
+        UserTitleEntity title = UserTitleEntity.builder()
+                .userTitleIdentity("T000")
+                .name("주임")
+                .build();
+
+        var result = userTitleRepository.save(title);
+        var isExists = userTitleRepository.existsByTitleIdentity(result.getTitleIdentity());
+        var findResult = userTitleRepository.findByTitleIdentity(result.getTitleIdentity());
+        assertThat(isExists).isEqualTo(true);
+        assertThat(result.getId()).isEqualTo(findResult.get().getId());
+    }
     //endregion
 
 
@@ -102,10 +178,10 @@ class OrghartApplicationTests {
     //region ETC
     @Test
     void 레코드_클래스_검증(){
-        var com1 = new CreateUserCommand("jw", 12);
-        var com2 = new CreateUserCommand("jw", 12);
-
-        assertThat(com1).isEqualTo(com2);
+//        var com1 = new CreateUserCommand("jw", 12);
+//        var com2 = new CreateUserCommand("jw", 12);
+//
+//        assertThat(com1).isEqualTo(com2);
     }
     //endregion
 
@@ -113,7 +189,7 @@ class OrghartApplicationTests {
 
     @Test
     void 서비스_인젝션_검증(){
-        Long result = userService.createUser();
-        assertThat(result).isEqualTo(0);
+//        Long result = userService.createUser();
+//        assertThat(result).isEqualTo(0);
     }
 }

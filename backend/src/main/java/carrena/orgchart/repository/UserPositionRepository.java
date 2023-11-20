@@ -4,6 +4,9 @@ import carrena.orgchart.entity.UserPositionEntity;
 import carrena.orgchart.interfaces.UserPositionRepositoryInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserPositionRepository extends JpaRepository<UserPositionEntity, Long>, UserPositionRepositoryInterface {
+import java.util.Optional;
 
+public interface UserPositionRepository extends JpaRepository<UserPositionEntity, Long>, UserPositionRepositoryInterface {
+   Boolean existsByPositionIdentity(String positionIdentity);
+   Optional<UserPositionEntity> findByPositionIdentity(String positionIdentity);
 }

@@ -30,12 +30,14 @@ public class UserEntity extends EntityBase {
     private long sortOrder = 0;
 
     @Builder
-    public UserEntity(String name, String userIdentity, String userNumber, String email, String phoneNumber, String officeTel) {
+    public UserEntity(long sortOrder,Status status,String name, String userIdentity, String userNumber, String email, String phoneNumber, String officeTel) {
         this.name = name;
         this.userIdentity = userIdentity;
         this.userNumber = userNumber;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.officeTel = officeTel;
+        this.status = status;
+        this.sortOrder = sortOrder;
     }
 }

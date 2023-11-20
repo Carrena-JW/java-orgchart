@@ -14,8 +14,8 @@ public class UserTitleEntity extends EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false,unique = true,name = "user_title_id")
-    private String userTitleIdentity;
+    @Column(nullable = false,unique = true,name = "title_id")
+    private String titleIdentity;
     @Column(nullable = false)
     private String name;
     private Status status = Status.active;
@@ -25,7 +25,7 @@ public class UserTitleEntity extends EntityBase {
     @Builder
     public UserTitleEntity(String userTitleIdentity, String name, Status status, long sortOrder) {
         this.name = name;
-        this.userTitleIdentity = userTitleIdentity;
+        this.titleIdentity = userTitleIdentity;
         this.status = status == null ? Status.active : status;
         this.sortOrder = sortOrder;
     }

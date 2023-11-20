@@ -34,4 +34,15 @@ public class UserMapEntity extends EntityBase {
     @JoinColumn(name="user_role_id")
     private UserRoleEntity role;
 
+    private Boolean isMainJob;
+
+    @Builder
+    public UserMapEntity(Boolean isMainJob, UserEntity user, UserDepartmentEntity department, UserPositionEntity position, UserTitleEntity title, UserRoleEntity role) {
+        this.user = user;
+        this.department = department;
+        this.position = position;
+        this.title = title;
+        this.role = role;
+        this.isMainJob = isMainJob;
+    }
 }

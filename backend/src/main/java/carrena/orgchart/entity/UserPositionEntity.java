@@ -16,15 +16,15 @@ public class UserPositionEntity extends EntityBase {
     private long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false, unique = true,name = "user_position_id")
-    private String userPositionIdentity;
+    @Column(nullable = false, unique = true,name = "position_id")
+    private String positionIdentity;
     private Status status = Status.active;
     private long sortOrder = 0;
 
     @Builder
     public UserPositionEntity(String name, String userPositionIdentity, Status status, long sortOrder) {
         this.name = name;
-        this.userPositionIdentity = userPositionIdentity;
+        this.positionIdentity = userPositionIdentity;
         this.status = status == null ? Status.active : status;;
         this.sortOrder = sortOrder;
     }
