@@ -7,19 +7,15 @@ import carrena.orgchart.query.response.FindUserResponse;
 import carrena.orgchart.service.UserService;
 import com.querydsl.core.util.StringUtils;
 import jakarta.annotation.Nullable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
     private final UserQuery userQuery;
-
-    @Autowired
-    public UserController(UserService userService, UserQuery userQuery) {
-        this.userService = userService;
-        this.userQuery = userQuery;
-    }
 
     //region COMMAND
     @PostMapping("/api/user")

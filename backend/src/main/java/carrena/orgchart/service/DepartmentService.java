@@ -4,20 +4,18 @@ import carrena.orgchart.command.department.CreateDepartmentCommand;
 import carrena.orgchart.entity.UserDepartmentEntity;
 import carrena.orgchart.enums.Status;
 import carrena.orgchart.repository.*;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class DepartmentService {
 
     private final UserDepartmentRepository userDepartmentRepository;
-
-    @Autowired
-    public DepartmentService(UserDepartmentRepository userDepartmentRepository) {
-        this.userDepartmentRepository = userDepartmentRepository;
-    }
 
     public Long saveOrUpdateDepartment(CreateDepartmentCommand command){
         var department = UserDepartmentEntity.builder()

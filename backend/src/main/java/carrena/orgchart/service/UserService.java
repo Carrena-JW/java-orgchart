@@ -7,12 +7,15 @@ import carrena.orgchart.enums.UserCommandType;
 import carrena.orgchart.enums.UserValidationType;
 import carrena.orgchart.repository.*;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapRepository userMapRepository;
@@ -20,16 +23,6 @@ public class UserService {
     private final UserRoleRepository userRoleRepository;
     private final UserTitleRepository userTitleRepository;
     private final UserPositionRepository userPositionRepository;
-
-    @Autowired
-    public UserService(UserMapRepository userMapRepository, UserRepository userRepository, UserDepartmentRepository userDepartmentRepository, UserRoleRepository userRoleRepository, UserTitleRepository userTitleRepository, UserPositionRepository userPositionRepository) {
-        this.userRepository = userRepository;
-        this.userMapRepository = userMapRepository;
-        this.userDepartmentRepository = userDepartmentRepository;
-        this.userRoleRepository = userRoleRepository;
-        this.userTitleRepository = userTitleRepository;
-        this.userPositionRepository = userPositionRepository;
-    }
 
     /***
      * 모든 서비스에 진입점을 통일 시키고 외부에 서비스 내부 함수를 노출 시키지 않음
